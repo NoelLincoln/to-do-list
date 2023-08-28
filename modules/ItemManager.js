@@ -30,6 +30,7 @@ class ItemManager {
   addTask() {
     const description = this.description.value.trim();
     const completed = false;
+
     const id = this.savedItems.length;
 
     if (description !== null) {
@@ -38,6 +39,11 @@ class ItemManager {
     }
 
     this.renderItems();
+  }
+
+  removeTask(index) {
+    this.savedItems.splice(index, 1);
+    this.updateLocalStorage();
   }
 
   handleOnClickAddItem(event) {
@@ -60,22 +66,42 @@ class ItemManager {
       const ToDoItems = document.createElement('div');
       ToDoItems.classList.add('to-do-items');
       const Options = document.createElement('div');
-      Options.value = '&#10247;';
       Options.innerHTML = '<i class="fa-solid fa-ellipsis-vertical"></i>';
+      Options.setAttribute('id', 'options-icon');
+
+      const TrashIcon = document.createElement('div');
+      TrashIcon.innerHTML = '<i class="fas fa-trash-alt"></i>';
+      TrashIcon.setAttribute('id', 'trash-icon');
+      TrashIcon.style.display = 'none';
 
       Items.appendChild(ToDoItems);
       Items.appendChild(Options);
+      Items.appendChild(TrashIcon);
+
       this.ToDoItemsContainer.appendChild(divider);
 
       const CompletedStatus = document.createElement('input');
+      CompletedStatus.classList.add('checkbox');
       CompletedStatus.type = 'checkbox';
-      const DesriptionInput = document.createElement('input');
-      DesriptionInput.type = 'text';
-      DesriptionInput.value = item.description;
-      DesriptionInput.classList.add('to-do-item');
+      CompletedStatus.setAttribute('id', 'checkbox');
+      CompletedStatus.checked = false;
+      CompletedStatus.addEventListener('change', () => {
+        const optionsicon = document.getElementById('options-icon');
+        optionsicon.style.display = 'none';
+        TrashIcon.style.display = 'flex';
+      });
+
+      //   const isChecked = document.querySelector('.checkbox').checked;
+      //   const CompletedStatusValue = isChecked ? 1 : 0;
+      //   CompletedStatus = CompletedStatusValue;
+
+      const DescriptionInput = document.createElement('input');
+      DescriptionInput.type = 'text';
+      DescriptionInput.value = item.description;
+      DescriptionInput.classList.add('to-do-item');
 
       ToDoItems.appendChild(CompletedStatus);
-      ToDoItems.appendChild(DesriptionInput);
+      ToDoItems.appendChild(DescriptionInput);
 
       this.ToDoItemsContainer.appendChild(Items);
     });
