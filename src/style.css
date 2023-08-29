@@ -80,6 +80,10 @@ hr {
   height: 25px;
 }
 
+.checked {
+  text-decoration: line-through;
+}
+
 .clear-btn {
   display: flex;
   align-items: center;

@@ -31,6 +31,5 @@ entericon.appendChild(EnterIcon);
 // };
 
 document.addEventListener('DOMContentLoaded', () => {
-  const initializeApp = new ItemManager();
-  initializeApp.renderItems('school work');
+  ItemManager();
 });
