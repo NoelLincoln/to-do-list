@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Tyros';
-  src: url('./fonts/Tyros/TyrosPro-Regular.woff2') format('woff2'),
+  src:
+    url('./fonts/Tyros/TyrosPro-Regular.woff2') format('woff2'),
     url('./fonts/Tyros/TyrosPro-Regular.woff') format('woff');
   font-weight: 600;
   font-style: normal;
@@ -110,7 +111,8 @@ input[type='reset'] {
   outline: inherit;
 }
 
-.error {
+.error,
+.error-edit {
   color: red;
   font-size: 10px;
 }

@@ -28,8 +28,7 @@ const addTask = () => {
     descriptionInput.value = '';
   } else {
     const error = document.querySelector('.error');
-    error.innerHTML =
-      '<p class="error-p" id="description-error"> Please fill in a task or item</p>';
+    error.innerHTML = '<p class="error-p" id="description-error"> Please fill in a task or item</p>';
 
     const descriptionError = document.getElementById('description-error');
     descriptionInput.addEventListener('click', () => {
