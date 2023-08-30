@@ -1,3 +1,5 @@
+import removeTask from './RemoveTask.js';
+
 const renderItems = () => {
   const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
 
@@ -38,7 +40,7 @@ const renderItems = () => {
     const CompletedStatus = document.createElement('input');
     CompletedStatus.classList.add('checkbox');
     CompletedStatus.type = 'checkbox';
-    CompletedStatus.setAttribute('id', index);
+    CompletedStatus.setAttribute('id', index + 1);
     CompletedStatus.setAttribute('checked', checked);
     CompletedStatus.checked = item.completed;
     CompletedStatus.addEventListener('change', () => {
@@ -60,18 +62,20 @@ const renderItems = () => {
         optionsicon.style.display = 'flex';
         trashIcon.style.display = 'none';
         ToDoItems.classList.toggle('checked');
+        CompletedStatus.checked = false;
+        updateLocalStorage();
       }
 
       trashIcon.addEventListener('click', () => {
         const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
 
-        if (index >= 0 && index < savedItems.length) {
+        if (index >= 0 && index < savedItems.length + 1) {
           savedItems.splice(index, 1); // Remove the item at the given index
 
-          // Update the IDs of the remaining items
-          savedItems.forEach((item, newIndex) => {
-            item.id = newIndex;
-          });
+          // Update the IDs of the remaining items starting from 1
+          for (let i = 0; i < savedItems.length; i += 1) {
+            savedItems[i].id = i + 1;
+          }
 
           // Update local storage with the modified savedItems array
           localStorage.setItem('savedItems', JSON.stringify(savedItems));
@@ -85,6 +89,36 @@ const renderItems = () => {
     DescriptionInput.type = 'text';
     DescriptionInput.value = item.description;
     DescriptionInput.classList.add('to-do-item');
+    DescriptionInput.setAttribute('id', item.id);
+
+    DescriptionInput.addEventListener('click', () => {
+      const optionsicon = Items.querySelector('.options-icon');
+      const trashIcon = Items.querySelector('.trash-icon');
+      optionsicon.style.display = 'none';
+      trashIcon.style.display = 'flex';
+    });
+    const trashIcon = Items.querySelector('.trash-icon');
+
+    trashIcon.addEventListener('click', () => {
+      const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+
+      if (index > 0 && index < savedItems.length) {
+        savedItems.forEach((item, newIndex) => {
+          item.id = newIndex;
+        });
+
+        localStorage.setItem('savedItems', JSON.stringify(savedItems));
+      }
+
+      renderItems();
+    });
+
+    DescriptionInput.addEventListener('blur', () => {
+      const optionsicon = Items.querySelector('.options-icon');
+      const trashIcon = Items.querySelector('.trash-icon');
+      optionsicon.style.display = 'flex';
+      trashIcon.style.display = 'none';
+    });
 
     ToDoItems.appendChild(CompletedStatus);
     ToDoItems.appendChild(DescriptionInput);

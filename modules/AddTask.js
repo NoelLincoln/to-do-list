@@ -22,19 +22,19 @@ const addTask = () => {
   if (descriptionValue !== '') {
     savedItems.push({ description: descriptionValue, completed, id });
 
-    updateItemIds();
     updateLocalStorage();
+    updateItemIds();
     renderItems();
     descriptionInput.value = '';
   } else {
     const error = document.querySelector('.error');
     error.innerHTML =
       '<p class="error-p" id="description-error"> Please fill in a task or item</p>';
-  }
 
-  const descriptionError = document.getElementById('description-error');
-  descriptionInput.addEventListener('click', () => {
-    descriptionError.textContent = ''; // Clear the error message
-  });
+    const descriptionError = document.getElementById('description-error');
+    descriptionInput.addEventListener('click', () => {
+      descriptionError.textContent = ''; // Clear the error message
+    });
+  }
 };
 export default addTask;
