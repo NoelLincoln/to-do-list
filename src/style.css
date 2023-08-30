@@ -81,9 +81,42 @@ hr {
   height: 25px;
 }
 
+.checked {
+  text-decoration: line-through;
+}
+
 .clear-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: beige;
+}
+
+.clear-btn:hover,
+.enter-icon:hover,
+#refresh,
+.trash-icon:hover {
+  cursor: pointer;
+}
+
+button,
+input[type='submit'],
+input[type='reset'] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.error,
+.error-edit {
+  color: red;
+  font-size: 10px;
+}
+
+.display-none {
+  display: none;
 }
