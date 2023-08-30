@@ -47,20 +47,15 @@ const renderItems = () => {
       item.completed = CompletedStatus.checked;
       updateLocalStorage();
 
-      const optionsicon = Items.querySelector('.options-icon');
       const trashIcon = Items.querySelector('.trash-icon');
 
       if (CompletedStatus.checked) {
-        optionsicon.style.display = 'none';
-        trashIcon.style.display = 'flex';
         CompletedStatus.checked = true;
         updateLocalStorage();
 
         // completed = true;
         ToDoItems.classList.toggle('checked');
       } else {
-        optionsicon.style.display = 'flex';
-        trashIcon.style.display = 'none';
         ToDoItems.classList.toggle('checked');
         CompletedStatus.checked = false;
         updateLocalStorage();
@@ -85,9 +80,8 @@ const renderItems = () => {
       });
     });
 
-    const DescriptionInput = document.createElement('input');
-    DescriptionInput.type = 'text';
-    DescriptionInput.value = item.description;
+    const DescriptionInput = document.createElement('p');
+    DescriptionInput.textContent = item.description;
     DescriptionInput.classList.add('to-do-item');
     DescriptionInput.setAttribute('id', item.id);
 
