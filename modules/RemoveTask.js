@@ -6,7 +6,7 @@ const removeTask = (index) => {
 
     // Update the IDs of the remaining items
     savedItems.forEach((item, newIndex) => {
-      item.id = newIndex;
+      item.id = newIndex + 1;
     });
 
     // Update local storage with the modified savedItems array

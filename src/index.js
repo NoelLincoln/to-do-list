@@ -1,17 +1,23 @@
 import './style.css';
 import EnterIconImg from './images/enter.png';
-import ItemManager from '../modules/ItemManager';
+import ItemManager from '../modules/ItemManager.js';
 // import Elipsis from
 
-const todoitemscontainer = document.getElementById('to-do-items-container');
 const entericon = document.getElementById('enter-icon');
-const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
 
 const EnterIcon = new Image();
 EnterIcon.src = EnterIconImg;
 
 entericon.appendChild(EnterIcon);
 
+// const taskForm = document.getElementById('task-form');
+// const descriptionInput = document.getElementById('description');
+
+// taskForm.addEventListener('submit', (event) => {
+//   if (descriptionInput.value.trim() === '') {
+//     console.log('empty field'); // Optionally show an error message or provide user feedback
+//   }
+// });
 // const loadToDoItems = (savedItems) => {
 //   const sortedTodoItems = savedItems.sort((a, b) => a.index - b.index);
 

@@ -1,25 +1,13 @@
 import renderItems from './RenderTasks.js';
 
-const removeCheckedItems = () => {
-  const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
-  const updatedItems = savedItems.filter((item) => !item.completed);
-
-  localStorage.setItem('savedItems', JSON.stringify(updatedItems));
-  renderItems();
-};
-
 const addTask = () => {
   const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
-  const descriptionval = document.getElementById('description');
-  const description = descriptionval.value.trim();
-
-  console.log(description);
+  const descriptionInput = document.getElementById('description');
+  const descriptionValue = descriptionInput.value.trim(); // Use a separate variable
 
   const completed = false;
 
   const updateItemIds = () => {
-    const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
-
     savedItems.forEach((item, index) => {
       item.id = index;
     });
@@ -29,22 +17,24 @@ const addTask = () => {
     localStorage.setItem('savedItems', JSON.stringify(savedItems));
   };
 
-  //   descriptionval.addEventListener('keypress', (event) => {
-  //     if (event.keycode === 13) {
-  //       event.preventDefault();
-  //       document.getElementById('enter-icon').click = () => {
-  //         addTask();
-  //       };
-  //     }
-  //   });
-
   const id = savedItems.length + 1;
-  if (descriptionval !== null) {
-    savedItems.push({ description, completed, id });
-    descriptionval.value = '';
+
+  if (descriptionValue !== '') {
+    savedItems.push({ description: descriptionValue, completed, id });
+
     updateItemIds();
     updateLocalStorage();
     renderItems();
+    descriptionInput.value = '';
+  } else {
+    const error = document.querySelector('.error');
+    error.innerHTML =
+      '<p class="error-p" id="description-error"> Please fill in a task or item</p>';
   }
+
+  const descriptionError = document.getElementById('description-error');
+  descriptionInput.addEventListener('click', () => {
+    descriptionError.textContent = ''; // Clear the error message
+  });
 };
 export default addTask;
