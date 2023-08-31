@@ -15,8 +15,6 @@ const renderItems = () => {
     Items.setAttribute('data-id', item.id);
     Items.setAttribute('draggable', 'true');
 
-    const divider = document.createElement('hr');
-
     const ToDoItems = document.createElement('div');
     ToDoItems.classList.add('to-do-items');
     const Options = document.createElement('div');
@@ -40,7 +38,6 @@ const renderItems = () => {
 
     const ItemsContainer = document.createElement('div');
     ItemsContainer.appendChild(Items);
-    // ItemsContainer.appendChild(divider);
 
     ToDoItemsContainer.appendChild(ItemsContainer);
 
@@ -133,8 +130,7 @@ const renderItems = () => {
         renderItems();
       } else {
         const error = document.querySelector('.error');
-        error.innerHTML =
-          '<p class="error-p" id="description-error"> Please fill in a task or item</p>';
+        error.innerHTML = '<p class="error-p" id="description-error"> Please fill in a task or item</p>';
       }
       const descriptionError = document.getElementById('description-error');
       DescriptionInput.addEventListener('click', () => {
