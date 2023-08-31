@@ -55,12 +55,28 @@ hr {
 .to-do-items-container {
   display: flex;
   flex-direction: column;
+  height: 270px;
+  overflow-y: auto;
 }
 
 .items {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 10px;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.items.dragging {
+  opacity: 0.9;
+}
+
+.items.dragging :where(.to-do-items, .options-icon) {
+  opacity: 0;
 }
 
 .to-do-items {
@@ -81,15 +97,22 @@ hr {
   height: 25px;
 }
 
+.options-icon:hover {
+  cursor: move;
+}
+
 .checked {
   text-decoration: line-through;
 }
 
 .clear-btn {
   display: flex;
+  width: 40%;
+  margin: auto;
   align-items: center;
   justify-content: center;
   background-color: beige;
+  transition: 0.2s ease-in-out 0s;
 }
 
 .clear-btn:hover,
@@ -97,6 +120,7 @@ hr {
 #refresh,
 .trash-icon:hover {
   cursor: pointer;
+  transform: scale(1.25);
 }
 
 button,

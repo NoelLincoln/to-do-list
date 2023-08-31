@@ -13,8 +13,7 @@ const renderItems = () => {
     const Items = document.createElement('div');
     Items.classList.add('items');
     Items.setAttribute('data-id', item.id);
-
-    const divider = document.createElement('hr');
+    Items.setAttribute('draggable', 'true');
 
     const ToDoItems = document.createElement('div');
     ToDoItems.classList.add('to-do-items');
@@ -37,7 +36,10 @@ const renderItems = () => {
     Items.appendChild(TrashIcon);
     Items.appendChild(EditIcon);
 
-    ToDoItemsContainer.appendChild(divider);
+    const ItemsContainer = document.createElement('div');
+    ItemsContainer.appendChild(Items);
+
+    ToDoItemsContainer.appendChild(ItemsContainer);
 
     const CompletedStatus = document.createElement('input');
     CompletedStatus.classList.add('checkbox');
@@ -146,6 +148,24 @@ const renderItems = () => {
     ToDoItems.appendChild(DescriptionInput);
 
     ToDoItemsContainer.appendChild(Items);
+
+    const clearAllCompleted = () => {
+      const clearallbtn = document.getElementById('clear-btn');
+      clearallbtn.addEventListener('click', () => {
+        const updatedSavedItems = savedItems.filter((item) => !item.completed);
+        localStorage.setItem('savedItems', JSON.stringify(updatedSavedItems));
+
+        const updateItemIds = () => {
+          savedItems.forEach((item, index) => {
+            item.id = index;
+          });
+        };
+        updateItemIds();
+
+        renderItems();
+      });
+    };
+    clearAllCompleted();
   });
 };
 
