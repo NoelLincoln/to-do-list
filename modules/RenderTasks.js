@@ -128,7 +128,8 @@ const renderItems = () => {
         renderItems();
       } else {
         const error = document.querySelector('.error');
-        error.innerHTML = '<p class="error-p" id="description-error"> Please fill in a task or item</p>';
+        error.innerHTML =
+          '<p class="error-p" id="description-error"> Please fill in a task or item</p>';
       }
       const descriptionError = document.getElementById('description-error');
       DescriptionInput.addEventListener('click', () => {
@@ -146,6 +147,17 @@ const renderItems = () => {
     ToDoItems.appendChild(DescriptionInput);
 
     ToDoItemsContainer.appendChild(Items);
+
+    const clearAllCompleted = () => {
+      const clearallbtn = document.getElementById('clear-btn');
+      clearallbtn.addEventListener('click', () => {
+        const updatedSavedItems = savedItems.filter((item) => !item.completed);
+        localStorage.setItem('savedItems', JSON.stringify(updatedSavedItems));
+
+        renderItems();
+      });
+    };
+    clearAllCompleted();
   });
 };
 
