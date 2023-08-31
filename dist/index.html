@@ -12,19 +12,19 @@
             <div class="container">
                 <div class="title">
                     <h3>Today's to do</h3>
-                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                    <i class="fa fa-refresh" aria-hidden="true" id="refresh"  onClick="window.location.reload();"></i>
                 </div>
                 <hr>
-                <div class="add-to-list">
-                    <i><input type="text" placeholder="Add to your list..."></input></i>
-                    <div class="trash-icon"></div>
+                <form class="add-to-list" id="task-form">
+                    <i><input type="text" placeholder="Add to your list..." id="description" required></input>
+                     <span class="error"></span></i>
+                   
+                <button type="submit" class="enter-icon" id="enter-icon"></button>
+                </form>
+                <div id="to-do-items-container" class="to-do-items-container">
+
                 </div>
-                <hr>
-                <div id="to-do-items-container" class="">
-                    
-                </div>
-                
-                <div class="clear-btn">
+                <div class="clear-btn" id="clear-btn">
                     <p>Clear all completed</p>
                 </div>
                 <div></div>
