@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To do list</title>
+        <script src="https://kit.fontawesome.com/7ed5cfd7fa.js" crossorigin="anonymous"></script>
+        <link href="./style.css" />
+    <script defer src="/runtime.js"></script><script defer src="/main.js"></script></head>
+    <body>
+        <div class="wrapper">
+            <div class="container">
+                <div class="title">
+                    <h3>Today's to do</h3>
+                    <i class="fa fa-refresh" aria-hidden="true" id="refresh"  onClick="window.location.reload();"></i>
+                </div>
+                <hr>
+                <form class="add-to-list" id="task-form">
+                    <i><input type="text" placeholder="Add to your list..." id="description" required></input>
+                     <span class="error"></span></i>
+                   
+                <button type="submit" class="enter-icon" id="enter-icon"></button>
+                </form>
+                <div id="to-do-items-container" class="to-do-items-container">
+
+                </div>
+                <div class="clear-btn" id="clear-btn">
+                    <p>Clear all completed</p>
+                </div>
+                <div></div>
+            </div>
+
+        </div>
+        <script src="./index.js"></script>
+    </body>
+</html>
