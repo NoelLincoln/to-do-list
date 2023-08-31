@@ -154,6 +154,13 @@ const renderItems = () => {
         const updatedSavedItems = savedItems.filter((item) => !item.completed);
         localStorage.setItem('savedItems', JSON.stringify(updatedSavedItems));
 
+        const updateItemIds = () => {
+          savedItems.forEach((item, index) => {
+            item.id = index;
+          });
+        };
+        updateItemIds();
+
         renderItems();
       });
     };

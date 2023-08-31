@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'Tyros';
-  src:
-    url('./fonts/Tyros/TyrosPro-Regular.woff2') format('woff2'),
+  src: url('./fonts/Tyros/TyrosPro-Regular.woff2') format('woff2'),
     url('./fonts/Tyros/TyrosPro-Regular.woff') format('woff');
   font-weight: 600;
   font-style: normal;
@@ -55,6 +54,7 @@ hr {
 .to-do-items-container {
   display: flex;
   flex-direction: column;
+  min-height: 600px;
 }
 
 .items {
@@ -87,9 +87,12 @@ hr {
 
 .clear-btn {
   display: flex;
+  width: 40%;
+  margin: auto;
   align-items: center;
   justify-content: center;
   background-color: beige;
+  transition: 0.2s ease-in-out 0s;
 }
 
 .clear-btn:hover,
@@ -97,6 +100,7 @@ hr {
 #refresh,
 .trash-icon:hover {
   cursor: pointer;
+  transform: scale(1.25);
 }
 
 button,
