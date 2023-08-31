@@ -13,6 +13,7 @@ const renderItems = () => {
     const Items = document.createElement('div');
     Items.classList.add('items');
     Items.setAttribute('data-id', item.id);
+    Items.setAttribute('draggable', 'true');
 
     const divider = document.createElement('hr');
 
@@ -37,7 +38,11 @@ const renderItems = () => {
     Items.appendChild(TrashIcon);
     Items.appendChild(EditIcon);
 
-    ToDoItemsContainer.appendChild(divider);
+    const ItemsContainer = document.createElement('div');
+    ItemsContainer.appendChild(Items);
+    // ItemsContainer.appendChild(divider);
+
+    ToDoItemsContainer.appendChild(ItemsContainer);
 
     const CompletedStatus = document.createElement('input');
     CompletedStatus.classList.add('checkbox');

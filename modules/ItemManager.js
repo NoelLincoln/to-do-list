@@ -1,8 +1,6 @@
 import renderItems from './RenderTasks.js';
 import addTask from './AddTask.js';
 
-const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
-
 const ItemManager = () => {
   renderItems();
 
