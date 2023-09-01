@@ -5,6 +5,7 @@
   "repository": {
     "url": "git+https://github.com/NoelLincoln/to-do-list.git"
   },
+  "homepage": "http://noellincoln.github.io/to-do-list",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
