@@ -72,7 +72,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-The Live Demo of this Capstone Project is available now on GitHub Pages and Loom.
+The Live Demo of this Project is available now on GitHub Pages.
 
 - Live Demo Link on [GitHub pages](https://noellincoln.github.io/to-do-list)
 
