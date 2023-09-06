@@ -17,7 +17,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   height: auto;
   margin: auto;
   margin-top: 3rem;
@@ -142,4 +142,14 @@ input[type='reset'] {
 
 .display-none {
   display: none;
+}
+
+@media (min-width: 768px) {
+  * {
+    margin: auto;
+  }
+
+  .wrapper {
+    width: 50%;
+  }
 }
