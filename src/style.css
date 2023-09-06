@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'Tyros';
-  src:
-    url('./fonts/Tyros/TyrosPro-Regular.woff2') format('woff2'),
+  src: url('./fonts/Tyros/TyrosPro-Regular.woff2') format('woff2'),
     url('./fonts/Tyros/TyrosPro-Regular.woff') format('woff');
   font-weight: 600;
   font-style: normal;
@@ -17,7 +16,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   height: auto;
   margin: auto;
   margin-top: 3rem;
@@ -142,4 +141,14 @@ input[type='reset'] {
 
 .display-none {
   display: none;
+}
+
+@media (min-width: 768px) {
+  * {
+    margin: auto;
+  }
+
+  .wrapper {
+    width: 50%;
+  }
 }
