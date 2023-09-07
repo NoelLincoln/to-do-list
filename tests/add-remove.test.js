@@ -47,4 +47,18 @@ describe('addTask, renderItems, and removeItems', () => {
       id: 1,
     });
   });
+  test('it does not add a task when description is empty', () => {
+    // Arrange
+    const descriptionInput = document.getElementById('description');
+    descriptionInput.value = '';
+
+    // Act
+    addTask();
+
+    // Retrieve and parse the savedItems from localStorage
+    const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+
+    // Assert
+    expect(savedItems).toEqual([]); // Check for an empty array
+  });
 });
