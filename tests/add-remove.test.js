@@ -3,14 +3,6 @@
  */
 
 import addTask from '../modules/AddTask.js';
-import renderItems from '../modules/RenderTasks.js';
-
-const localStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  clear: jest.fn(),
-};
-// global.localStorage = localStorageMock;
 
 // Create a function to set up the DOM environment
 const setUpDOM = () => {
