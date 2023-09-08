@@ -112,18 +112,18 @@ describe('addTask, renderItems, and removeItems', () => {
       { id: 2, description: 'Task 2', completed: false },
     ];
     localStorage.setItem('savedItems', JSON.stringify(savedItems));
-  
+
     renderItems();
-  
+
     const firstItemTrashIcon = document.querySelector('.trash-icon');
     expect(document.querySelectorAll('.items').length).toBe(2);
-  
+
     // Act
     firstItemTrashIcon.dispatchEvent(new Event('click'));
-  
+
     // Assert
     const updatedItems = JSON.parse(localStorage.getItem('savedItems'));
-    expect(updatedItems.length-1).toBe(1);
+    expect(updatedItems.length - 1).toBe(1);
     // expect(updatedItems[0].description).toBe('Task 2');
   });
 });
