@@ -87,5 +87,4 @@ describe('renderItems, and removeItems', () => {
     expect(firstItemTrashIcon.style.display).toBe('flex');
     expect(firstItemCheckbox.checked).toBe(true);
   });
-  edit - complete - tests;
 });
