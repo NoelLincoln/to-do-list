@@ -61,4 +61,26 @@ describe('addTask, renderItems, and removeItems', () => {
     // Assert
     expect(savedItems).toEqual([]); // Check for an empty array
   });
+
+  test('it renders the items correctly', () => {
+    // Arrange
+    const savedItems = [
+      { id: 1, description: 'Task 1', completed: false },
+      { id: 2, description: 'Task 2', completed: true },
+    ];
+    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+    // Act
+    renderItems();
+    // Assert
+    const renderedItems = document.querySelectorAll('.items');
+    expect(renderedItems.length).toBe(2);
+    const item1 = renderedItems[0];
+    expect(item1.getAttribute('data-id')).toBe('1');
+    expect(item1.querySelector('.to-do-item').value).toBe('Task 1');
+    expect(item1.querySelector('.checkbox').checked).toBe(false);
+    const item2 = renderedItems[1];
+    expect(item2.getAttribute('data-id')).toBe('2');
+    expect(item2.querySelector('.to-do-item').value).toBe('Task 2');
+    expect(item2.querySelector('.checkbox').checked).toBe(true);
+  });
 });
