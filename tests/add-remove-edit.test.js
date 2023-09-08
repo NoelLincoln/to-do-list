@@ -143,4 +143,27 @@ describe('addTask, renderItems, and removeItems', () => {
     const updatedItems = JSON.parse(localStorage.getItem('savedItems'));
     expect(updatedItems[0].description).toBe('Updated Task 1');
   });
+  
+test('it clears all completed items from local storage when "Clear All" button is clicked', () => {
+  // Arrange
+  const savedItems = [
+    { id: 1, description: 'Task 1', completed: true },
+    { id: 2, description: 'Task 2', completed: false },
+    { id: 3, description: 'Task 3', completed: true },
+  ];
+  localStorage.setItem('savedItems', JSON.stringify(savedItems));
+
+  renderItems();
+
+  const clearAllBtn = document.getElementById('clear-btn');
+  expect(document.querySelectorAll('.items').length).toBe(3);
+
+  // Act
+  clearAllBtn.dispatchEvent(new Event('click'));
+
+  // Assert
+  const updatedItems = JSON.parse(localStorage.getItem('savedItems'));
+  expect(updatedItems.length).toBe(1);
+  expect(updatedItems[0].description).toBe('Task 2');
+});
 });
