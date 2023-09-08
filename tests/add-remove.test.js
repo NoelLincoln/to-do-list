@@ -3,6 +3,7 @@
  */
 
 import addTask from '../modules/AddTask.js';
+import renderItems from '../modules/RenderTasks.js';
 
 // Create a function to set up the DOM environment
 const setUpDOM = () => {
@@ -82,5 +83,26 @@ describe('addTask, renderItems, and removeItems', () => {
     expect(item2.getAttribute('data-id')).toBe('2');
     expect(item2.querySelector('.to-do-item').value).toBe('Task 2');
     expect(item2.querySelector('.checkbox').checked).toBe(true);
+  });
+
+  test('it removes the item from the local storage and re-renders items when the trash icon is clicked', () => {
+    // Arrange
+    const savedItems = [
+      { id: 1, description: 'Task 1', completed: false },
+      { id: 2, description: 'Task 2', completed: false },
+      { id: 3, description: 'Task 3', completed: false },
+    ];
+    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+    renderItems();
+    const secondItemTrashIcon = document.querySelectorAll('.trash-icon')[1];
+    // Act
+    secondItemTrashIcon.dispatchEvent(new Event('click'));
+    // Assert
+    const updatedItems = JSON.parse(localStorage.getItem('savedItems'));
+    expect(updatedItems.length - 1).toBe(2);
+    expect(updatedItems[0].description).toBe('Task 1');
+    expect(updatedItems[1].description).toBe('Task 2');
+    const renderedItems = document.querySelectorAll('.items');
+    expect(renderedItems.length - 1).toBe(2);
   });
 });
