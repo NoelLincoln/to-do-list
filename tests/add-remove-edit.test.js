@@ -126,4 +126,21 @@ describe('addTask, renderItems, and removeItems', () => {
     expect(updatedItems.length - 1).toBe(1);
     // expect(updatedItems[0].description).toBe('Task 2');
   });
+
+  test('it updates the local storage correctly when editing an item description', () => {
+    // Arrange
+    const savedItems = [
+      { id: 1, description: 'Task 1', completed: false },
+      { id: 2, description: 'Task 2', completed: false },
+    ];
+    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+    renderItems();
+    const firstItemDescriptionInput = document.querySelector('.to-do-item');
+    // Act
+    firstItemDescriptionInput.value = 'Updated Task 1';
+    firstItemDescriptionInput.dispatchEvent(new Event('blur'));
+    // Assert
+    const updatedItems = JSON.parse(localStorage.getItem('savedItems'));
+    expect(updatedItems[0].description).toBe('Updated Task 1');
+  });
 });
