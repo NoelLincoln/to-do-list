@@ -126,5 +126,4 @@ describe('addTask, renderItems, and removeItems', () => {
     expect(updatedItems.length - 1).toBe(1);
     // expect(updatedItems[0].description).toBe('Task 2');
   });
-
 });
