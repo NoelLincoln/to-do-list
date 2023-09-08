@@ -42,7 +42,7 @@ describe('renderItems, and removeItems', () => {
   });
 
   test('it clears all completed items from local storage when "Clear All" button is clicked', () => {
-  // Arrange
+    // Arrange
     const savedItems = [
       { id: 1, description: 'Task 1', completed: true },
       { id: 2, description: 'Task 2', completed: false },
@@ -63,4 +63,29 @@ describe('renderItems, and removeItems', () => {
     expect(updatedItems.length).toBe(1);
     expect(updatedItems[0].description).toBe('Task 2');
   });
+  test('it updates the item status and local storage correctly when completing an item', () => {
+    // Arrange
+    const savedItems = [
+      { id: 1, description: 'Task 1', completed: true },
+      { id: 2, description: 'Task 2', completed: true },
+    ];
+    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+
+    renderItems();
+
+    const firstItemCheckbox = document.querySelector('.checkbox');
+    const firstItemOptionsIcon = document.querySelector('.options-icon');
+    const firstItemTrashIcon = document.querySelector('.trash-icon');
+
+    // Act
+    firstItemCheckbox.dispatchEvent(new Event('change'));
+
+    // Assert
+    const updatedItems = JSON.parse(localStorage.getItem('savedItems'));
+    expect(updatedItems[0].completed).toBe(true);
+    expect(firstItemOptionsIcon.style.display).toBe('none');
+    expect(firstItemTrashIcon.style.display).toBe('flex');
+    expect(firstItemCheckbox.checked).toBe(true);
+  });
+  edit - complete - tests;
 });
