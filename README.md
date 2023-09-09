@@ -29,7 +29,6 @@
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
@@ -151,6 +150,18 @@ You can deploy this project using [GitHub Pages](https://pages.github.com/)
 - GitHub: [@githubhandle](https://github.com/NoelLincoln)
 - Twitter: [@twitterhandle](https://twitter.com/NoelLincoln)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/noel-bryant/)
+
+👤 **Surafel Samson**
+
+- GitHub: [@Surafels](https://github.com/Surafels)
+- Twitter: [@SurafelSamson2](https://twitter.com/SurafelSamson2)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/surafel-samson-4b2635267/)
+
+👤 **Filbert Kimasas**
+
+- GitHub: [@githubhandle](https://github.com/FilbertKimasa)
+- Twitter: [@twitterhandle](https://twitter.com/filbertdan67)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/filbert-daniel-32b118143)
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
